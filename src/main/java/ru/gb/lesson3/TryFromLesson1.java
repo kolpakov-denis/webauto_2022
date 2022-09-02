@@ -5,13 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
 public class TryFromLesson1 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws MoveTargetOutOfBoundsException, InterruptedException {
 
         WebDriverManager.firefoxdriver().setup();
 
@@ -39,7 +40,7 @@ public class TryFromLesson1 {
 
         driver.findElement(By.xpath("//a[@title='Add to cart']")).click();
 
-      //  driver.findElement(By.cssSelector("a.button-medium")).click(); - пока не смог реализовать
+        //driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click(); //- пока не смог реализовать
 
         driver.quit();
 
