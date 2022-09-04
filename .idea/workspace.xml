@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7702e91a-d618-4a12-89b2-168a985a98b6" name="Changes" comment="Lesson 3">
+    <list default="true" id="7702e91a-d618-4a12-89b2-168a985a98b6" name="Changes" comment="First step">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/gb/lesson4_Triangles/InvalidFigureException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/gb/lesson4_Triangles/InvalidSideLengthException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/gb/lesson4_Triangles/Triangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/gb/lesson4_Triangles/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/gb/App.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/gb/lesson3/TryFromLesson1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/gb/lesson3/TryFromLesson1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/gb/AppTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -39,20 +48,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.TryFromLesson1">
-    <configuration name="TryFromLesson1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson3.TryFromLesson1" />
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.gb.lesson4_Triangles" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TriangleTest.testVerifyCalculations">
+    <configuration name="Triangle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson4_Triangles.Triangle" />
       <module name="webauto_2022" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.gb.lesson3.*" />
+          <option name="PATTERN" value="ru.gb.lesson4_Triangles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -60,28 +74,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TryOzon" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson3.TryOzon" />
+    <configuration name="TriangleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="webauto_2022" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.gb.lesson3.*" />
+          <option name="PATTERN" value="ru.gb.lesson4_Triangles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="ru.gb.lesson4_Triangles" />
+      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson4_Triangles.TriangleTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TryWP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson3.TryWP" />
+    <configuration name="TriangleTest.testVerifyCalculations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="webauto_2022" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.gb.lesson3.*" />
+          <option name="PATTERN" value="ru.gb.lesson4_Triangles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="ru.gb.lesson4_Triangles" />
+      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson4_Triangles.TriangleTest" />
+      <option name="METHOD_NAME" value="testVerifyCalculations" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TriangleTest.testVerifyMethodThrowsBadFigureException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webauto_2022" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.lesson4_Triangles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.gb.lesson4_Triangles" />
+      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson4_Triangles.TriangleTest" />
+      <option name="METHOD_NAME" value="testVerifyMethodThrowsBadFigureException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TriangleTest.testVerifyMethodThrowsBadSideException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webauto_2022" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.lesson4_Triangles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.gb.lesson4_Triangles" />
+      <option name="MAIN_CLASS_NAME" value="ru.gb.lesson4_Triangles.TriangleTest" />
+      <option name="METHOD_NAME" value="testVerifyMethodThrowsBadSideException" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,9 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TryFromLesson1" />
-        <item itemvalue="Application.TryWP" />
-        <item itemvalue="Application.TryOzon" />
+        <item itemvalue="JUnit.TriangleTest.testVerifyCalculations" />
+        <item itemvalue="Application.Triangle" />
+        <item itemvalue="JUnit.TriangleTest" />
+        <item itemvalue="JUnit.TriangleTest.testVerifyMethodThrowsBadFigureException" />
+        <item itemvalue="JUnit.TriangleTest.testVerifyMethodThrowsBadSideException" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +189,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

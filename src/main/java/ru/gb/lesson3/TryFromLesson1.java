@@ -3,6 +3,7 @@ package ru.gb.lesson3;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
@@ -14,9 +15,9 @@ import java.time.Duration;
 public class TryFromLesson1 {
     public static void main(String[] args) throws MoveTargetOutOfBoundsException, InterruptedException {
 
-        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.chromedriver().setup();
 
-        WebDriver driver = new FirefoxDriver();
+        WebDriver driver = new ChromeDriver();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -40,7 +41,9 @@ public class TryFromLesson1 {
 
         driver.findElement(By.xpath("//a[@title='Add to cart']")).click();
 
-        //driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click(); //- пока не смог реализовать
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".button-medium:nth-child(2) > span")));
+
+        driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click();
 
         driver.quit();
 
