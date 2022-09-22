@@ -22,7 +22,8 @@ public class AddToCartEveningDressAndWishlistCreationTest {
     void initDriver() {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
-        driver.get("http://automationpractice.com/index.php");
+        Assertions.assertDoesNotThrow( ()-> driver.navigate().to("http://automationpractice.com/index.php"),
+                "508 Resource Limit Is Reached");
     }
     @Test
     void buyEveninDressTest() {
@@ -30,7 +31,10 @@ public class AddToCartEveningDressAndWishlistCreationTest {
                 .login("veinzettel@ya.ru", "!QAZ2wsx")
                 .navigationBlock.clickDresses()
                 .clickEveningDressChkbx()
-                .addToCartByName("Printed Dress");
+                .addToCartByName("Printed Dress")
+                .assertCartResult();
+
+
 
     }
     @Test
@@ -38,7 +42,9 @@ public class AddToCartEveningDressAndWishlistCreationTest {
         mainPage.clickSingInButton()
                 .login("veinzettel@ya.ru", "!QAZ2wsx")
                 .myWishlistBtnClick()
-                .createNewWishlist("CrazyWishlist1");
+                .createNewWishlist("CrazyWishlist1")
+                .assertNewWishlist("CrazyWishlist1");
+
     }
 
     @AfterEach

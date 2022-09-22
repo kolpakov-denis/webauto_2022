@@ -47,7 +47,7 @@ public class DressesPage extends PageView {
 
 
 
-    public void addToCartByName(String dressName) {
+    public DressesPage addToCartByName(String dressName) {
 
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[.='Add to cart']")));
         actions.moveToElement(dressesList.stream().filter(d -> d.getText().contains(dressName)).findFirst().get())
@@ -55,8 +55,13 @@ public class DressesPage extends PageView {
         dressesList.stream().filter(d -> d.getText().contains(dressName)).findFirst().get().findElement(
                 By.xpath(addToCartButtonXpathLocator)).click();
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".button-medium:nth-child(2) > span")));
-        Assertions.assertTrue(driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).isDisplayed());
+        //Assertions.assertTrue(driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).isDisplayed());
+        return this;
 
+    }
+
+    public void assertCartResult() {
+        Assertions.assertTrue(driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).isDisplayed());
     }
 
 

@@ -18,9 +18,17 @@ public class WishlistsPage extends PageView {
     @FindBy(id = "submitWishlist")
     private WebElement submitWishlistBtn;
 
-    public void createNewWishlist (String wishlistName) {
+    public WishlistsPage createNewWishlist (String wishlistName) {
+
         nameField.sendKeys(wishlistName);
         submitWishlistBtn.click();
-        Assertions.assertTrue(driver.findElement(By.xpath("//a[contains(text(),'" + wishlistName + "')]")).isDisplayed());
+        return this;
     }
+
+    public void assertNewWishlist(String wishlistName) {
+        Assertions.assertTrue(driver.findElement(By.xpath("//a[contains(text(),'" + wishlistName + "')]")).isDisplayed());
+
+    }
+
+
 }
