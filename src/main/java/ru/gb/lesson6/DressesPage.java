@@ -1,5 +1,6 @@
 package ru.gb.lesson6;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +40,7 @@ public class DressesPage extends PageView {
     @FindBy(xpath = addToCartButtonXpathLocator)
     private WebElement addToCartButton;
 
+    @Step("Кликаем по чекбоксу \"Вечерние платья\"")
     public DressesPage clickEveningDressChkbx() {
         eveningDressChkbx.click();
         webDriverWait.until(ExpectedConditions.urlContains("categories-evening_dresses")); //Выглядит как хороший вариант ожидания для медленного сайта...
@@ -46,7 +48,7 @@ public class DressesPage extends PageView {
     }
 
 
-
+    @Step("Добавляем в корзину заданное по имени платье")
     public DressesPage addToCartByName(String dressName) {
 
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[.='Add to cart']")));
@@ -55,11 +57,11 @@ public class DressesPage extends PageView {
         dressesList.stream().filter(d -> d.getText().contains(dressName)).findFirst().get().findElement(
                 By.xpath(addToCartButtonXpathLocator)).click();
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".button-medium:nth-child(2) > span")));
-        //Assertions.assertTrue(driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).isDisplayed());
+
         return this;
 
     }
-
+    @Step("Проверяем отображение корзины")
     public void assertCartResult() {
         Assertions.assertTrue(driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).isDisplayed());
     }
