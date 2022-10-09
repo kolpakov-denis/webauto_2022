@@ -19,13 +19,12 @@ public class SpoonComplexSearchTest extends BaseTest {
 
     @Test
     void complexSearchParamsTest1(){
-       String sushi = given()
-                .queryParam("apiKey", getSpoon_key())
+       String sushi = given().spec(requestSpecification)
                 .queryParam("query", "Japanese Sushi")
                 .when()
                 .get(getSpoon_url()+"recipes/complexSearch")
                 .then()
-                .statusCode(200)
+                .spec(responseSpecification)
                 .and()
                 .extract().response().jsonPath().getString("results[0].title");
         Assertions.assertEquals("Japanese Sushi", sushi);
@@ -33,8 +32,7 @@ public class SpoonComplexSearchTest extends BaseTest {
     }
     @Test
     void complexSearchParamsTest2(){
-        String sushi = given()
-                .queryParam("apiKey", getSpoon_key())
+        String sushi = given().spec(requestSpecification)
                 .queryParam("cuisine", "Asian")
                 .queryParam("includeIngredients", "salmon caviar")
                 .queryParam("diet", "pescatarian,gluten free")
@@ -43,7 +41,7 @@ public class SpoonComplexSearchTest extends BaseTest {
                 .when()
                 .get(getSpoon_url()+"recipes/complexSearch")
                 .then()
-                .statusCode(200)
+                .spec(responseSpecification)
                 .and()
                 .extract().response().jsonPath().getString("results[0].title");
         Assertions.assertEquals("Japanese Sushi", sushi);
@@ -51,8 +49,7 @@ public class SpoonComplexSearchTest extends BaseTest {
     }
     @Test
     void ingredientsSearchTest1() {
-        Response ingredientSearch = given()
-                .queryParam("apiKey", getSpoon_key())
+        Response ingredientSearch = given().spec(requestSpecification)
                 .queryParam("ingredients", getIngredient1() + "," + getIngredient2())
                 .queryParam("number", "1")
                 .queryParam("ranking", "1")
@@ -60,7 +57,7 @@ public class SpoonComplexSearchTest extends BaseTest {
                 .when()
                 .get(getSpoon_url() + "recipes/findByIngredients")
                 .then()
-                .statusCode(200)
+                .spec(responseSpecification)
                 .and()
                 .extract().response();
 
@@ -69,12 +66,11 @@ public class SpoonComplexSearchTest extends BaseTest {
 
 
 
-        Response result = given()
-                .queryParam("apiKey", getSpoon_key())
+        Response result = given().spec(requestSpecification)
                 .when()
                 .get(getSpoon_url() + "recipes/" + savedId + "/summary")
                 .then()
-                .statusCode(200)
+                .spec(responseSpecification)
                 .and()
                 .extract().response();
         Assertions.assertEquals(savedId+savedName,
@@ -92,8 +88,7 @@ public class SpoonComplexSearchTest extends BaseTest {
                 .log()
                 .uri()
                 .expect()
-                .statusCode(200)
-                .time(lessThanOrEqualTo(1500L))
+                .spec(responseSpecification)
                 .body("totalResults", is(175))
                 .body("results", hasSize(3))
                 .log()
@@ -118,9 +113,7 @@ public class SpoonComplexSearchTest extends BaseTest {
         RestAssured.given()
                 .body(Map.of("username", "random", "firstName", "random", "lastname", "random", "email", "random"))
                 .expect()
-                .statusCode(200)
-                .time(lessThanOrEqualTo(1500L))
-                .header("Content-Type", "application/json")
+                .spec(responseSpecification)
                 .body("status", is("success"))
                 .body("username", isA(String.class))
                 .body("spoonacularPassword", isA(String.class))
@@ -153,15 +146,12 @@ public class SpoonComplexSearchTest extends BaseTest {
     void generateShoppingListSuccessful200(){
 
         Object actual = given()
-                .queryParam("apiKey", "82edbd35678d4210a138c8a53a47688f")
                 .queryParam("hash", "cfb46db8e2cff3e37fe328a89320e14cf18efa8c")
                 .pathParams("username", "murphy-erdman19")
                 .pathParam("start-date", "2022-02-06")
                 .pathParam("end-date", "2022-02-28")
                 .expect()
-                .statusCode(200)
-                .time(lessThanOrEqualTo(1500L))
-                .header("Content-Type", "application/json")
+                .spec(responseSpecification)
                 .body("aisles", hasSize(0)) // actual is (LinkedHashMap), aisles is(ArrayList)
                 .body("cost", is(0.0F))
                 .body("startDate", is(1644105600))
@@ -175,14 +165,12 @@ public class SpoonComplexSearchTest extends BaseTest {
     @Test
     void addToShoppingListSuccessful200(){
 
-        Object actualRes = given()
+        Object actualRes = given().spec(requestSpecification)
                 .queryParam("hash", "cfb46db8e2cff3e37fe328a89320e14cf18efa8c")
                 .pathParams("username", "murphy-erdman19")
                 .body(Map.of("item", "1 package baking powder", "aisle", "Baking", "parse", true))
                 .expect()
-                .statusCode(200)
-                .time(lessThanOrEqualTo(1500L))
-                .header("Content-Type", "application/json")
+                .spec(responseSpecification)
                 .when()
                 .post("/mealplanner/{username}/shopping-list/items")
                 .as(Object.class);
@@ -197,12 +185,11 @@ public class SpoonComplexSearchTest extends BaseTest {
     @Test
     void getShoppingListSuccessful200(){
 
-        LinkedHashMap actualRes = given()
+        LinkedHashMap actualRes = given().spec(requestSpecification)
                 .queryParam("hash", "cfb46db8e2cff3e37fe328a89320e14cf18efa8c")
                 .pathParams("username", "murphy-erdman19")
                 .expect()
-                .statusCode(200)
-                .time(lessThanOrEqualTo(1500L))
+                .spec(responseSpecification)
                 .body("aisles[0].items[0].name", is("baking powder"))
                 .header("Content-Type", "application/json;charset=utf-8")
                 .when()
@@ -221,8 +208,7 @@ public class SpoonComplexSearchTest extends BaseTest {
                 .pathParams("username", "murphy-erdman19")
                 .pathParam("id", "1297577")
                 .expect()
-                .statusCode(200)
-                .time(lessThanOrEqualTo(1500L))
+                .spec(responseSpecification)
                 .body("status", is("success"))
                 .when()
                 .delete("/mealplanner/{username}/shopping-list/items/{id}");
